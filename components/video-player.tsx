@@ -1,7 +1,5 @@
 "use client"
-
-import { Button } from "@/components/ui/button"
-import { X, Maximize, Minimize, Play } from "lucide-react"
+import { Play } from "lucide-react"
 import { useState, useEffect } from "react"
 
 interface VideoPlayerProps {
@@ -57,17 +55,17 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
   }, [onClose])
 
   return (
-    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-2 sm:p-4" onClick={onClose}>
       <div
         className={`relative w-full bg-black rounded-lg overflow-hidden shadow-2xl ${
-          isFullscreen ? "h-full max-w-none max-h-none" : "max-w-5xl max-h-[90vh]"
+          isFullscreen ? "h-full max-w-none max-h-none" : "max-w-5xl max-h-[100vh]"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/90 to-transparent p-3">
+        <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/90 to-transparent p-2 sm:p-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-white font-semibold text-sm md:text-base line-clamp-1 text-balance max-w-[80%]">
+            <h2 className="text-white font-semibold text-xs sm:text-sm md:text-base line-clamp-1 text-balance max-w-[80%] pr-2">
               {video.name}
             </h2>
           </div>
@@ -80,8 +78,8 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
               className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 cursor-pointer"
               onClick={() => setShowPlayButton(false)}
             >
-              <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center transform hover:scale-110 transition-transform duration-200 shadow-2xl">
-                <Play className="w-10 h-10 text-primary-foreground ml-1" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/90 flex items-center justify-center transform hover:scale-110 transition-transform duration-200 shadow-2xl">
+                <Play className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground ml-1" />
               </div>
             </div>
           )}
@@ -95,8 +93,6 @@ export default function VideoPlayer({ video, onClose }: VideoPlayerProps) {
             style={{ border: "none" }}
           />
         </div>
-
-      
       </div>
     </div>
   )
